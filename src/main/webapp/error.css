@@ -1,0 +1,40 @@
+@charset "UTF-8";
+body{
+	background-color:#FDF5E6;
+	font-size:30px;
+	text-align:center;
+		height: 200px;
+  	position: relative;
+}
+h1{
+	font-color:black;
+	position: absolute;
+  	top: 140%; /*親要素を起点に上から50%*/
+  	left: 50%;  /*親要素を起点に左から50%*/
+  	transform: translateY(-50%) translateX(-50%); /*要素の大きさの半分ずつを戻す*/
+  	-webkit-transform: translateY(-50%) translateX(-50%);
+}
+.btn {
+  display: inline-block;
+  max-width: 180px;
+  text-align: left;
+  border: 2px solid #9ec34b;
+  font-size: 16px;
+  color: #9ec34b;
+  text-decoration: none;
+  font-weight: bold;
+  padding: 8px 16px;
+  border-radius: 4px;
+  transition: .4s;
+    position: absolute;
+  top: 200%; /*親要素を起点に上から50%*/
+  left: 50%;  /*親要素を起点に左から50%*/
+  transform: translateY(-50%) translateX(-50%); /*要素の大きさの半分ずつを戻す*/
+  -webkit-transform: translateY(-50%) translateX(-50%);
+}
+
+.btn {
+  background-color: #9ec34b;
+  border-color: #cbe585;
+  color:black;
+}

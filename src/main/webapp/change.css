@@ -1,0 +1,35 @@
+@charset "UTF-8";
+body{
+	background-color:#FDF5E6;
+	font-size:30px;
+	text-align:center;
+	wigth:500px;
+	height: 200px;
+  	position: relative;
+	}
+
+a{
+  font-size:40px;}
+.btn {
+  display: inline-block;
+  max-width: 180px;
+  text-align: left;
+  border: 2px solid #9ec34b;
+  font-size: 16px;
+  color: #9ec34b;
+  text-decoration: none;
+  font-weight: bold;
+  padding: 30px 16px;
+  border-radius: 4px;
+  transition: .4s;
+}
+
+.btn {
+  background-color: #9ec34b;
+  border-color: #cbe585;
+  color:black;
+}
+table{
+	padding:3px;
+	margin:auto;
+}
