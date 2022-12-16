@@ -1,5 +1,6 @@
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,36 +26,28 @@ public class ImageGetServlet extends HttpServlet {
 		request.setCharacterEncoding("utf-8");
 		response.setContentType("utf-8");
 		List<String> errMessage = new ArrayList<String>();
-		
-		
-		String filename = "/upload/Hanabi.png";
-		
+		String filename;
 		
 		//name属性がpictのファイルをPartオブジェクトとして取得
 		Part part = request.getPart("pict");
-		if(part == null) {
-			filename = null;
-		}
-		/*
-		String filename=Paths.get(part.getSubmittedFileName()).getFileName().toString();
-		
-		//アップロードするフォルダ
-		String path=getServletContext().getRealPath("upload");
-		File file = new File(path);
-		if(!file.exists()) {
-			file.mkdir();
-		}
-		//書き込み
-		String saveFile = path + File.separator + filename;
-		part.write(saveFile);
-		*/
-		if(filename == null || filename == "") {
-			errMessage.add("画像が入力されていません。");
+		try {
+			filename = Paths.get(part.getSubmittedFileName()).getFileName().toString();
+			//アップロードするフォルダ
+			String path=getServletContext().getRealPath("upload");
+			File file = new File(path);
+			if(!file.exists()) {
+				file.mkdir();
+			}
+			//書き込み
+			String saveFile = path + File.separator + filename;
+			part.write(saveFile);
+			request.setAttribute("saveFile", saveFile);
+			request.getRequestDispatcher("/OperationAPI").forward(request, response);
+			
+		} catch(Exception e) {
+			errMessage.add("画像形式が正しくありません");
 			request.setAttribute("errMessage", errMessage);
 			request.getRequestDispatcher("error.jsp").forward(request, response);
-		} else {
-			request.setAttribute("filename", filename);
-			request.getRequestDispatcher("/OperationAPI").forward(request, response);
 		}
 	}
 }

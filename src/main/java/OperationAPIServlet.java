@@ -21,31 +21,32 @@ public class OperationAPIServlet extends HttpServlet {
     }
     
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-request.setCharacterEncoding("utf-8");
+		request.setCharacterEncoding("utf-8");
+		List<String> errMessage = (List<String>)request.getAttribute("errMessage");
+		
 		String filename = null;
 		File imageFile = null;
 		byte[] fileContent = null;
 		String base64Image = null;
 		try {
-			filename = "C:/Users/200311/Desktop/Hanabi.png";
-			//filename = (String)request.getAttribute("filename");
+			//filename = "C:/Users/200311/Desktop/Hanabi.png";
+			filename = (String)request.getAttribute("saveFile");
 			imageFile = new File(filename);
 			fileContent = Files.readAllBytes(imageFile.toPath());
+			
 			base64Image = Base64.getEncoder().encodeToString(fileContent);
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
-		
 		try {
-			
 			FormRecognizer sendResult = AnalyzeAPI.sendImage(base64Image);
 			if (sendResult != null) {
 				System.out.println(sendResult.error.message);
-				response.sendRedirect("error.jsp");
+				errMessage.add("画像解析中にエラーが発生しました");
+				request.getRequestDispatcher("error.jsp").forward(request, response);
 			} else {
-				
-				String key = "082ef81b-0612-430a-a07d-9871f4947273";
-				
+			
+				String key = "6b7d3b16-5355-4793-ac78-4a207d6868dd";
 				//Luisを使用して分類
 				FormRecognizer aResult = AnalyzeAPI.getResult(key);
 				
@@ -80,7 +81,6 @@ request.setCharacterEncoding("utf-8");
 				
 				for(int l = 0 ; l < wordBox.length ; l++) {
 					Luis lResult = LuisAPI.getLuis(wordBox[l]);
-					System.out.println(wordBox[l]);
 					switch(lResult.prediction.topIntent.toString()) {
 						case "Title" :
 							titleBox.add(lResult.query);
@@ -190,6 +190,13 @@ request.setCharacterEncoding("utf-8");
 					endTime = s;
 				}
 				
+				
+				if(title == null && startTime == null && endTime == null && startDate == null && endDate == null && place == null) {
+					errMessage.add("内容が読み込めませんでした");
+					request.setAttribute("errMessage", errMessage);
+					request.getRequestDispatcher("/error.jsp").forward(request, response);
+				}
+				
 				request.setAttribute("title", title);
 				request.setAttribute("startTime", startTime);
 				request.setAttribute("endTime", endTime);
@@ -197,9 +204,11 @@ request.setCharacterEncoding("utf-8");
 				request.setAttribute("endDate", endDate);
 				request.setAttribute("place", place);
 				request.getRequestDispatcher("/change.jsp").forward(request, response);
-			}
+		}
 		} catch(Exception e) {
-			e.printStackTrace();
+			errMessage.add("例外エラーが発生しました");
+			request.setAttribute("errMessage", errMessage);
+			request.getRequestDispatcher("/error.jsp").forward(request, response);
 		}
 	}
 	public static String DateFormatChange(String date) {

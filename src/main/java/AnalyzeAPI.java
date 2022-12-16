@@ -64,7 +64,8 @@ public class AnalyzeAPI extends HttpServlet {
 
 		String jsonData = new Gson().toJson(doc);
 		InetSocketAddress proxy =new InetSocketAddress("172.17.0.2", 80);
-		JsonReader reader = WebApiConnector.postJsonReader(strurl,proxy,map,jsonData);
+		//JsonReader reader = WebApiConnector.postJsonReader(strurl,proxy,map,jsonData);
+		JsonReader reader = WebApiConnector.postJsonReader(strurl,map,jsonData);
 		FormRecognizer sendResult = null;
 		if (reader != null) {
 			sendResult = gson.fromJson(reader, FormRecognizer.class);
@@ -82,7 +83,8 @@ public class AnalyzeAPI extends HttpServlet {
 				+ "&subscription-key=9abfc957d16849f7bbf5b669a335f3c1";
 
 		InetSocketAddress proxy =new InetSocketAddress("172.17.0.2", 80);
-		JsonReader reader = WebApiConnector.getJsonReader(strurl,proxy);
+		//JsonReader reader = WebApiConnector.getJsonReader(strurl,proxy);
+		JsonReader reader = WebApiConnector.getJsonReader(strurl);
 		
 		FormRecognizer analyzeResult = null;
 		if (reader != null) {

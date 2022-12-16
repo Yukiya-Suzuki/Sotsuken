@@ -18,7 +18,7 @@
 	String place = (String)request.getAttribute("place"); 
 	
 	%>
-	<H1>内容の変更</H1>
+	<H1>内容の確認</H1>
 	<form action="IcalSet" method="post">
 	<table border="1">
 		<tr>
@@ -42,7 +42,7 @@
 		</tr>
 	</table>
 	<button type="submit" class="btn">確定</button>
-	<a href="内容確認画面.jsp" class="btn">戻る</a>
+	<a href="/画像入力画面.jsp" class="btn">戻る</a>
 	</form>
 </body>
 </html>

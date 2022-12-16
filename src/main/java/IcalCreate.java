@@ -10,20 +10,20 @@ import java.nio.file.Paths;
 public class IcalCreate {
 	public static void main(String[] args) {
 		createFile();
-		changeFile("テスト", "20221110", "20221110", "100000", "110000", "説明", "東北電子");
+		changeFile("テスト", "20221110", "20221110", "100000", "110000", "東北電子");
 		    try {
 		      Runtime rt = Runtime.getRuntime();
-		      rt.exec("Z:/JK3B11鈴木之也/GraduationWorks/SotsugyoKenkyu/src/main/webapp/WEB-INF/ical.ics");
+		      rt.exec("ical.ics");
 		    } catch (IOException e) {
 		      e.printStackTrace();
 		    }
 		//Icalファイル単体実行のメソッド
-		deleteFile();
+		//deleteFile();
 	}
 	
 	public static void createFile() {
-		File file = new File("Z:/JK3B11鈴木之也/GraduationWorks/SotsugyoKenkyu/src/main/webapp/WEB-INF/ical.ics");
-		/*
+		File file = new File("Z:/JK3B11鈴木之也/GraduationWorks/SotsugyoKenkyu/src/main/webapp/ical.ics");
+
 		try {
 			if(file.createNewFile()){
 				System.out.println("ファイル作成成功");
@@ -33,12 +33,12 @@ public class IcalCreate {
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
-		*/
+
 	}
 	
-	public static void changeFile(String event, String startdate, String enddate, String starttime, String endtime, String description, String location) {
+	public static void changeFile(String event, String startdate, String enddate, String starttime, String endtime, String location) {
 		try {
-            FileWriter file = new FileWriter("Z:/JK3B11鈴木之也/GraduationWorks/SotsugyoKenkyu/src/main/webapp/WEB-INF/ical.ics");
+            FileWriter file = new FileWriter("Z:/JK3B11鈴木之也/GraduationWorks/SotsugyoKenkyu/src/main/webapp/ical.ics");
             PrintWriter pw = new PrintWriter(new BufferedWriter(file));
             
             pw.println("BEGIN:VCALENDAR");
@@ -46,10 +46,9 @@ public class IcalCreate {
             pw.println("PRODID:-//200311//iCal 2.0//JA");
             pw.println("BEGIN:VEVENT");
             pw.println("UID:200311@jc-21.jp");
-            pw.println("DTSTART;TZID=Asia/Tokyo:" + startdate + "T" + starttime + "Z");
-            pw.println("DTEND;TZID=Asia/Tokyo:" + enddate + "T" + endtime + "Z");
+            pw.println("DTSTART;TZID=Asia/Tokyo:" + startdate + "T" + starttime);
+            pw.println("DTEND;TZID=Asia/Tokyo:" + enddate + "T" + endtime);
             pw.println("SUMMARY:" + event);
-            pw.println("DESCRIPTION:" + description);
             pw.println("LOCATION:" + location);
             pw.println("END:VEVENT");
             pw.println("END:VCALENDAR");
@@ -61,7 +60,7 @@ public class IcalCreate {
 	}
 	
 	public static void deleteFile() {
-		Path path = Paths.get("Z:/JK3B11鈴木之也/GraduationWorks/SotsugyoKenkyu/src/main/webapp/WEB-INF/ical.ics");
+		Path path = Paths.get("Z:/JK3B11鈴木之也/GraduationWorks/SotsugyoKenkyu/src/main/webapp/ical.ics");
 		try {
 			Files.delete(path);
 		} catch(Exception e) {

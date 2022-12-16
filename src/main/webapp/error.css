@@ -6,7 +6,7 @@ body{
 		height: 200px;
   	position: relative;
 }
-h1{
+h2{
 	font-color:black;
 	position: absolute;
   	top: 140%; /*親要素を起点に上から50%*/

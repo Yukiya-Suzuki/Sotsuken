@@ -20,15 +20,13 @@ public class IcalSetServlet extends HttpServlet {
 		String endDate = null;
 		String startTime = null;
 		String endTime = null;
-		String description = null;
 		String place = null;
 		try {
 			title = request.getParameter("changed_title");
-			startDate = encodeDate(request.getParameter("changed_date"));
-			endDate = encodeDate(request.getParameter("changed_date"));
+			startDate = encodeDate(request.getParameter("changed_startDate"));
+			endDate = encodeDate(request.getParameter("changed_endDate"));
 			startTime = encodeTime(request.getParameter("changed_startTime")) +"00";
 			endTime = encodeTime(request.getParameter("changed_endTime")) + "00";
-			//description = request.getParameter("changed_description");
 			place = request.getParameter("changed_place");
 		} catch(Exception e) {
 			e.printStackTrace();
@@ -36,10 +34,16 @@ public class IcalSetServlet extends HttpServlet {
 		
 		IcalCreate.createFile();
 		
-		IcalCreate.changeFile(title, startDate, endDate, startTime, endTime, description, place);
-		
-		request.getRequestDispatcher("/icalOpen.jsp").forward(request, response);
+		IcalCreate.changeFile(title, startDate, endDate, startTime, endTime, place);
+		  
+		try {
+			Runtime rt = Runtime.getRuntime();
+			rt.exec("ical.ics");
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
+		  
 	
 	public static String encodeDate(String date) {
 		String x = "";

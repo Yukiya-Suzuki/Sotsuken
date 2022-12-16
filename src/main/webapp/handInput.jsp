@@ -47,36 +47,29 @@ body {
 <title>予定を入力</title>
 </head>
 <body>
-<%
-	String title = (String)request.getAttribute("title");
-	String startDate = (String)request.getAttribute("startDate");
-	String endDate = (String)request.getAttribute("endDate");
-	String startTime = (String)request.getAttribute("startTime"); 
-	String endTime = (String)request.getAttribute("endTime"); 
-	String place = (String)request.getAttribute("place"); 
-	%>
+
 	<form method="post" action="in" >
 		<main class="size">
 			 		<table border="1">
 		<tr>
 			<td>タイトル</td>
-			<td><input type="text"  name="changed_tytle"  value="<%=title%>"  ></td>
+			<td><input type="text"  name="changed_tytle"  value=""  ></td>
 		</tr>
 		<tr>
 			<td>日付</td>
-			<td><input type="date" name="changed_startDate" value="<%=startDate%>">
+			<td><input type="date" name="changed_startDate" value="">
 			～
-			<input type="date" name="changed_endDate" value="<%=endDate%>"></td>
+			<input type="date" name="changed_endDate" value=""></td>
 		</tr>
 		<tr>
 			<td>時間</td>
-			<td><input type="time" name="changed_startTime" value="<%=startTime%>">
+			<td><input type="time" name="changed_startTime" value="">
 			～
-			<input type="time" name="changed_endTime" value="<%=endTime%>"></td>
+			<input type="time" name="changed_endTime" value=""></td>
 		</tr>
 		<tr>
 			<td>場所</td>
-			<td><input type="text" name="changed_place" value="<%=place%>"></td>
+			<td><input type="text" name="changed_place" value=""></td>
 		</tr>
 	</table>
 		</main>
