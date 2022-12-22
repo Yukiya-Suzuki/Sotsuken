@@ -10,13 +10,15 @@
 <body>
 	<%
 	String saveFile = (String)request.getAttribute("saveFile");
-	System.out.println(saveFile);
 	%> 
 	<img src="<%= saveFile %>">
 <H1>こちらの画像でよろしいですか？</H1>
 	<div class="container">
-	<a href="ImageGetServlet" class="btn">確定</a>
-	<a href="画像入力画面.jsp" class="btn">戻る</a>
+	<form method="post" action="OperationAPI">
+	<input type="hidden" value="<%= saveFile%>">
+	<button type="submit" class="btn">確定</button>
+	<button onclick="historyback()" class="btn">戻る</button>
+	</form>
 	</div>
 </body>
 </html>
