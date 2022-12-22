@@ -41,11 +41,16 @@ public class ImageGetServlet extends HttpServlet {
 			//書き込み
 			String saveFile = path + File.separator + filename;
 			part.write(saveFile);
-			request.setAttribute("saveFile", saveFile);
-			request.getRequestDispatcher("/OperationAPI").forward(request, response);
+			System.out.println(saveFile);
+			request.setAttribute("saveFile", "upload/" + filename);
+		//	request.setAttribute("saveFile", saveFile);
+			request.getRequestDispatcher("/内容確認画面.jsp").forward(request, response);
+			//request.getRequestDispatcher("/OperationAPI").forward(request, response);
 			
 		} catch(Exception e) {
 			errMessage.add("画像形式が正しくありません");
+			errMessage.add(e.getMessage());
+			e.printStackTrace();
 			request.setAttribute("errMessage", errMessage);
 			request.getRequestDispatcher("error.jsp").forward(request, response);
 		}
