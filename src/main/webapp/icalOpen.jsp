@@ -3,10 +3,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Refresh" content="1;URL=/webapp/WEB-INF/ical.ics">
 <meta charset="UTF-8">
-<title>カレンダーをダウンロード</title>
+<title>登録</title>
 </head>
 <body>
+<h2>予定が完成しました</h2>
+<h2>ボタンを押して追加画面に移動してください</h2>
+<button onclick="location.href='ical.ics'">カレンダーに登録する</button>
 </body>
 </html>
