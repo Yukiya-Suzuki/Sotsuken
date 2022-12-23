@@ -16,7 +16,7 @@ public class CalenderStartServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
-		request.getRequestDispatcher("/icalOpen.jsp").forward(request, response);
+		request.getRequestDispatcher("/画像入力画面.jsp").forward(request, response);
 	}
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
