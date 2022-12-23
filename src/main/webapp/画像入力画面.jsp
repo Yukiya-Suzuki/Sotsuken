@@ -20,9 +20,6 @@
 	<button type="submit" class="btn">送信する</button>
 </form>
 -->
-<form action="CalenderStart" method="post">
-		<button type="submit" class="btn">内容を入力する</button>
-</form>
  <p>プレビュー</p>
   <img id="preview"width="350px" height="625px">
     <script>
