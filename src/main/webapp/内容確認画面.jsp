@@ -8,17 +8,12 @@
 <title>内容確認画面</title>
 </head>
 <body>
-	<%
-	String saveFile = (String)request.getAttribute("saveFile");
-	%> 
-	<img src="<%= saveFile %>">
-<H1>こちらの画像でよろしいですか？</H1>
+<textarea name="name"></textarea>
+<H1>こちらの内容で確定しますか？</H1>
 	<div class="container">
-	<form method="post" action="OperationAPI">
-	<input type="hidden" value="<%= saveFile%>">
-	<button type="submit" class="btn">確定</button>
-	<button onclick="historyback()" class="btn">戻る</button>
-	</form>
+	<a href="complete.jsp" class="btn">確定</a>
+	<a href="change.jsp" class="btn">修正する</a>
+	<a href="画像入力画面.jsp" class="btn">戻る</a>
 	</div>
 </body>
 </html>

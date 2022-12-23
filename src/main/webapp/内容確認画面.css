@@ -7,10 +7,10 @@ body{
 H1{
 	
 }
-img{
+textarea{
 	width:500px;
 	height:400px;
-	}
+	padding:20px;}
 .btn {
   display: inline-block;
   max-width: 180px;

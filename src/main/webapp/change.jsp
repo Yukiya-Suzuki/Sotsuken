@@ -20,8 +20,6 @@
 	%>
 	<H1>内容の確認</H1>
 	<form action="IcalSet" method="post">
-	
-	
 	<table border="1">
 		<tr>
 			<td>タイトル</td>

@@ -30,7 +30,7 @@ public class OperationAPIServlet extends HttpServlet {
 		String base64Image = null;
 		try {
 			//filename = "C:/Users/200311/Desktop/Hanabi.png";
-			filename = (String)request.getParameter("saveFile");
+			filename = (String)request.getAttribute("saveFile");
 			imageFile = new File(filename);
 			fileContent = Files.readAllBytes(imageFile.toPath());
 			
