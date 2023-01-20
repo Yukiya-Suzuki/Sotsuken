@@ -8,7 +8,7 @@
 <link rel="stylesheet" href="complete.css">
 <title>追加完了</title>
 </head>
-<body>
+<body background="カレンダー.jpg">
 	<h2>予定が追加されました<br></h2>
 	<p>ホーム画面へ戻ります</p>
 </body>

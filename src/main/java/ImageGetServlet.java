@@ -10,6 +10,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import javax.servlet.http.Part;
 
 @WebServlet("/imageGet")
@@ -25,6 +26,8 @@ public class ImageGetServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
 		response.setContentType("utf-8");
+		
+		HttpSession imageSession = request.getSession();
 		List<String> errMessage = new ArrayList<String>();
 		String filename;
 		
@@ -41,16 +44,11 @@ public class ImageGetServlet extends HttpServlet {
 			//書き込み
 			String saveFile = path + File.separator + filename;
 			part.write(saveFile);
-			System.out.println(saveFile);
-			request.setAttribute("saveFile", "upload/" + filename);
-		//	request.setAttribute("saveFile", saveFile);
+			imageSession.setAttribute("saveFile", "upload/" + filename);
 			request.getRequestDispatcher("/内容確認画面.jsp").forward(request, response);
-			//request.getRequestDispatcher("/OperationAPI").forward(request, response);
 			
 		} catch(Exception e) {
 			errMessage.add("画像形式が正しくありません");
-			errMessage.add(e.getMessage());
-			e.printStackTrace();
 			request.setAttribute("errMessage", errMessage);
 			request.getRequestDispatcher("error.jsp").forward(request, response);
 		}

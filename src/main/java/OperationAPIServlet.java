@@ -1,9 +1,7 @@
 import java.io.File;
 import java.io.IOException;
-import java.nio.file.Files;
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Base64;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -11,6 +9,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 @WebServlet("/OperationAPI")
 public class OperationAPIServlet extends HttpServlet {
@@ -22,15 +21,17 @@ public class OperationAPIServlet extends HttpServlet {
     
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
-		List<String> errMessage = (List<String>)request.getAttribute("errMessage");
+		HttpSession imageSession = request.getSession();
+		
+		List<String> errMessage = new ArrayList<String>();;
 		
 		String filename = null;
 		File imageFile = null;
 		byte[] fileContent = null;
 		String base64Image = null;
 		try {
-			//filename = "C:/Users/200311/Desktop/Hanabi.png";
-			filename = (String)request.getParameter("saveFile");
+			/*
+			filename = (String)imageSession.getAttribute("saveFile");
 			imageFile = new File(filename);
 			fileContent = Files.readAllBytes(imageFile.toPath());
 			
@@ -38,15 +39,17 @@ public class OperationAPIServlet extends HttpServlet {
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
+
 		try {
+			/*
 			FormRecognizer sendResult = AnalyzeAPI.sendImage(base64Image);
 			if (sendResult != null) {
 				System.out.println(sendResult.error.message);
 				errMessage.add("画像解析中にエラーが発生しました");
 				request.getRequestDispatcher("error.jsp").forward(request, response);
 			} else {
-			
-				String key = "6b7d3b16-5355-4793-ac78-4a207d6868dd";
+			*/
+				String key = "203f005a-6a9d-4a2d-ad57-f7b0b08e2d06";
 				//Luisを使用して分類
 				FormRecognizer aResult = AnalyzeAPI.getResult(key);
 				
@@ -56,22 +59,8 @@ public class OperationAPIServlet extends HttpServlet {
 				for(int a = 0 ; a < aResult.analyzeResult.paragraphs.length ; a++) {
 					wordBox[a] = aResult.analyzeResult.paragraphs[a].content;
 				}
-				/*
-				URL obj = new URL("https://calendar.cognitiveservices.azure.com/"
-						+ "/formrecognizer/documentModels/prebuilt-read"
-						+ ":analyze?api-version=2022-08-31&stringIndexType=textElements");
-				URLConnection conn = obj.openConnection();
-
-				Map<String, List<String>> map = conn.getHeaderFields();
-				for(Map.Entry<String, List<String>> entry : map.entrySet()) {
-					String key = entry.getKey();
-					List<String> values = entry.getValue();
-					for(String val : values) {
-						System.out.println(key + " : " + val);
-					}
-				}
-				*/
 				
+				//レスポンスヘッダの処理が必要
 
 				List<String> titleBox = new ArrayList<>();
 				List<String> timeBox = new ArrayList<>();
@@ -204,9 +193,9 @@ public class OperationAPIServlet extends HttpServlet {
 				request.setAttribute("endDate", endDate);
 				request.setAttribute("place", place);
 				request.getRequestDispatcher("/change.jsp").forward(request, response);
-		}
 		} catch(Exception e) {
 			errMessage.add("例外エラーが発生しました");
+			e.printStackTrace();
 			request.setAttribute("errMessage", errMessage);
 			request.getRequestDispatcher("/error.jsp").forward(request, response);
 		}

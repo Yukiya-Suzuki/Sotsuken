@@ -36,12 +36,7 @@ public class IcalSetServlet extends HttpServlet {
 		
 		IcalCreate.changeFile(title, startDate, endDate, startTime, endTime, place);
 		  
-		try {
-			Runtime rt = Runtime.getRuntime();
-			rt.exec("ical.ics");
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+		request.getRequestDispatcher("icalOpen.jsp").forward(request, response);
 	}
 		  
 	

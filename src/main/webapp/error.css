@@ -1,18 +1,38 @@
 @charset "UTF-8";
 body{
-	background-color:#FDF5E6;
-	font-size:30px;
-	text-align:center;
-		height: 200px;
-  	position: relative;
+    background-color:#FDF5E6;
+    text-align:center;
+    height: 200px;
+    outline:none;
+    }
+h1 {
+  position: relative;
+  padding: 1.0rem;
+  text-align: center;
+  margin-bottom: 20px;
+  padding: 5px;
+  text-align: center;
+  color: #ffffff;
+  -webkit-text-stroke: 2px #000;
+  text-stroke: 2px #000;
+  text-shadow:
+    0 0 7px #fff,
+    0 0 10px #fff,
+    0 0 21px #fff,
+    0 0 42px #fff,
+    0 0 82px #fff,
+    0 0 92px #fff,
+    0 0 102px #fff,
+    0 0 151px #fff;    
 }
-h2{
-	font-color:black;
-	position: absolute;
-  	top: 140%; /*親要素を起点に上から50%*/
-  	left: 50%;  /*親要素を起点に左から50%*/
-  	transform: translateY(-50%) translateX(-50%); /*要素の大きさの半分ずつを戻す*/
-  	-webkit-transform: translateY(-50%) translateX(-50%);
+h1:before {
+  position: absolute;
+  bottom: -10px;
+  left: calc(50% - 30px);
+  width: 60px;
+  height: 5px;
+  content: '';
+  border-radius: 3px;
 }
 .btn {
   display: inline-block;
@@ -23,14 +43,9 @@ h2{
   color: #9ec34b;
   text-decoration: none;
   font-weight: bold;
-  padding: 8px 16px;
+  padding: 8px
   border-radius: 4px;
   transition: .4s;
-    position: absolute;
-  top: 200%; /*親要素を起点に上から50%*/
-  left: 50%;  /*親要素を起点に左から50%*/
-  transform: translateY(-50%) translateX(-50%); /*要素の大きさの半分ずつを戻す*/
-  -webkit-transform: translateY(-50%) translateX(-50%);
 }
 
 .btn {

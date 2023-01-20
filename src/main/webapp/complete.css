@@ -6,19 +6,34 @@ body{
 	height: 200px;
   	position: relative;
 	}
-H2{
-	position: absolute;
-  top: 80%; /*親要素を起点に上から50%*/
-  left: 50%;  /*親要素を起点に左から50%*/
-  transform: translateY(-50%) translateX(-50%); /*要素の大きさの半分ずつを戻す*/
-  -webkit-transform: translateY(-50%) translateX(-50%);
-  font-size:50px;
+h1{
+	position: relative;
+  	padding: 1.0rem;
+  	text-align: center;
+    margin-bottom: 20px;
+    padding: 20px;
+    text-align: center;
+   	color: #ffffff;
+   	-webkit-text-stroke: 3px #000;
+  	text-stroke: 5px #000;
+  text-shadow:
+    0 0 7px #fff,
+    0 0 10px #fff,
+    0 0 21px #fff,
+    0 0 42px #fff,
+    0 0 82px #fff,
+    0 0 92px #fff,
+    0 0 102px #fff,
+    0 0 151px #fff;
 }
-p{
-	position: absolute;
-  top: 120%; /*親要素を起点に上から50%*/
-  left: 50%;  /*親要素を起点に左から50%*/
-  transform: translateY(-50%) translateX(-50%); /*要素の大きさの半分ずつを戻す*/
-  -webkit-transform: translateY(-50%) translateX(-50%);
-  font-size:40px;
+h2{
+  position: relative;
+  padding: 1.0rem;
+  text-align: center;
+    margin-bottom: 20px;
+    padding: 20px;
+    text-align: center;
+   	color: #ffffff;
+   	-webkit-text-stroke: 3px #000;
+  	text-stroke: 5px #000;
 }

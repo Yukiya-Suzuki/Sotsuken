@@ -8,8 +8,9 @@
 <link rel="stylesheet" href="change.css">
 <title>内容の変更</title>
 </head>
-<body>
+<body background="カレンダー.jpg">
 	<%
+	
 	String title = (String)request.getAttribute("title");
 	String startDate = (String)request.getAttribute("startDate");
 	String endDate = (String)request.getAttribute("endDate");
@@ -18,11 +19,11 @@
 	String place = (String)request.getAttribute("place"); 
 	
 	%>
-	<H1>内容の確認</H1>
+	<h1><span>内容の確認</span></h1>
 	<form action="IcalSet" method="post">
 	
 	
-	<table border="1">
+	<table border="1" class="example3">
 		<tr>
 			<td>タイトル</td>
 			<td><input type="text" name="changed_title" value="<%=title%>"></td>

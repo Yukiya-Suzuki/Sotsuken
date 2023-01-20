@@ -9,12 +9,11 @@
 		<link rel="stylesheet" href="error.css">
 		<title>error</title>
 	</head>
-	<body>
+	<body background="カレンダー.jpg">
 		<%
 		List<String> errMessage = (List<String>)request.getAttribute("errMessage");
 		%>
-		<h2>エラーが発生しました</h2>
-		<b>エラー原因</b>
+		<h1>エラーが発生しました</h1>
 		<%
 		for(String error : errMessage) {
 		%>
@@ -22,7 +21,7 @@
 		<%
 		}
 		%>
-		<a href="historyback()" class="btn">リトライ</a>
+		<a href="CalenderStart" class="btn">リトライ</a>
 
 </body>
 </html>

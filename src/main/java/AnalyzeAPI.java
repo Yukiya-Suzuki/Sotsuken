@@ -41,7 +41,7 @@ public class AnalyzeAPI extends HttpServlet {
         */
         
         
-		String key = "13b469f4-5672-4158-b15f-7ecdfc4dd51e";
+		String key = "5b20bbf9-5b2f-4586-8385-58fbc28c2be4";
 		FormRecognizer analyzeResult = getResult(key);
 		if(analyzeResult != null) {
 			System.out.println(analyzeResult.status);
