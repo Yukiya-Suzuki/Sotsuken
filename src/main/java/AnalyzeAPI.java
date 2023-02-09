@@ -14,7 +14,7 @@ import com.google.gson.stream.JsonReader;
 
 public class AnalyzeAPI extends HttpServlet {
 	public static void main(String[] args) throws IOException, URISyntaxException, InterruptedException {
-		File image = new File("C:\\Users\\200311\\Desktop\\Hanabi.png"); 
+		File image = new File("C:\\Users\\200311\\Desktop\\restraunt.jpg"); 
 		byte[] fileContent = Files.readAllBytes(image.toPath());
 		String base64Image = Base64.getEncoder().encodeToString(fileContent);
 		
@@ -41,7 +41,7 @@ public class AnalyzeAPI extends HttpServlet {
         */
         
         
-		String key = "5b20bbf9-5b2f-4586-8385-58fbc28c2be4";
+		String key = "6257009f-526c-410d-a6a9-ab2d04cbf47d";
 		FormRecognizer analyzeResult = getResult(key);
 		if(analyzeResult != null) {
 			System.out.println(analyzeResult.status);
@@ -64,8 +64,8 @@ public class AnalyzeAPI extends HttpServlet {
 
 		String jsonData = new Gson().toJson(doc);
 		InetSocketAddress proxy =new InetSocketAddress("172.17.0.2", 80);
-		//JsonReader reader = WebApiConnector.postJsonReader(strurl,proxy,map,jsonData);
-		JsonReader reader = WebApiConnector.postJsonReader(strurl,map,jsonData);
+		JsonReader reader = WebApiConnector.postJsonReader(strurl,proxy,map,jsonData);
+		//JsonReader reader = WebApiConnector.postJsonReader(strurl,map,jsonData);
 		FormRecognizer sendResult = null;
 		if (reader != null) {
 			sendResult = gson.fromJson(reader, FormRecognizer.class);
@@ -83,8 +83,8 @@ public class AnalyzeAPI extends HttpServlet {
 				+ "&subscription-key=9abfc957d16849f7bbf5b669a335f3c1";
 
 		InetSocketAddress proxy =new InetSocketAddress("172.17.0.2", 80);
-		//JsonReader reader = WebApiConnector.getJsonReader(strurl,proxy);
-		JsonReader reader = WebApiConnector.getJsonReader(strurl);
+		JsonReader reader = WebApiConnector.getJsonReader(strurl,proxy);
+		//JsonReader reader = WebApiConnector.getJsonReader(strurl);
 		
 		FormRecognizer analyzeResult = null;
 		if (reader != null) {

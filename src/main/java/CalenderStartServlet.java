@@ -19,8 +19,4 @@ public class CalenderStartServlet extends HttpServlet {
 		request.getRequestDispatcher("/画像入力画面.jsp").forward(request, response);
 	}
 	
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.setCharacterEncoding("utf-8");
-		request.getRequestDispatcher("/handInput.jsp").forward(request, response);
-	}
 }

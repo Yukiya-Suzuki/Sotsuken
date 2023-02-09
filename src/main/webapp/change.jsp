@@ -10,7 +10,8 @@
 </head>
 <body background="カレンダー.jpg">
 	<%
-	
+	HttpSession imageSession = request.getSession();
+	String saveFile = (String)imageSession.getAttribute("saveFile");
 	String title = (String)request.getAttribute("title");
 	String startDate = (String)request.getAttribute("startDate");
 	String endDate = (String)request.getAttribute("endDate");
@@ -47,5 +48,6 @@
 	<button type="submit" class="btn">確定</button>
 	<a href="/画像入力画面.jsp" class="btn">戻る</a>
 	</form>
+	<img src="<%= saveFile %>">
 </body>
 </html>

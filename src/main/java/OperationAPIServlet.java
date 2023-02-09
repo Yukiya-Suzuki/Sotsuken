@@ -49,7 +49,13 @@ public class OperationAPIServlet extends HttpServlet {
 				request.getRequestDispatcher("error.jsp").forward(request, response);
 			} else {
 			*/
-				String key = "203f005a-6a9d-4a2d-ad57-f7b0b08e2d06";
+			filename = (String)imageSession.getAttribute("saveFile");
+			String key = "6257009f-526c-410d-a6a9-ab2d04cbf47d";
+			if(filename =="upload/restraunt.jpg") {
+				key = "6257009f-526c-410d-a6a9-ab2d04cbf47d";
+			} else if(filename =="upload/Hanabi.png") {
+				key = "6257009f-526c-410d-a6a9-ab2d04cbf47d";
+			}
 				//Luisを使用して分類
 				FormRecognizer aResult = AnalyzeAPI.getResult(key);
 				
@@ -112,7 +118,12 @@ public class OperationAPIServlet extends HttpServlet {
 						startDate = startTime.substring(slashIndex + 2, slashIndex + 4);
 					} else if(startTime.contains("/") && !startTime.contains("2022")) {
 						int slashIndex = startTime.indexOf("/");
-						startDate = startTime.substring(slashIndex - 2, slashIndex +2);
+						try {
+							startDate = startTime.substring(slashIndex - 2, slashIndex +1);
+						} catch(Exception e) {
+							startDate = startTime.substring(slashIndex - 1, slashIndex +2);
+							endDate = startTime.substring(slashIndex +7,slashIndex + 11);
+						}
 					}
 				}
 				if(dateBox.size() != 0) {
@@ -122,7 +133,9 @@ public class OperationAPIServlet extends HttpServlet {
 					}
 				}
 				if(dateBox.size() == 1 || dateBox.size() == 0) {
-					endDate = startDate;
+					if(endDate == null || endDate == "") {
+						endDate = startDate;
+					}
 				}
 				
 				//時間
@@ -145,7 +158,9 @@ public class OperationAPIServlet extends HttpServlet {
 				if(placeBox.size() != 0) {
 					place = placeBox.get(0);
 				}
-				
+				if(place == null) {
+					place = "";
+				}
 				//----フォーマット変換処理
 				startTime = TimeFormatChange(startTime);
 				endTime = TimeFormatChange(endTime);
