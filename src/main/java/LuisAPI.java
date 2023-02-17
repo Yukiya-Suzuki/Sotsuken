@@ -28,8 +28,8 @@ public class LuisAPI {
 		
 		InetSocketAddress proxy =new InetSocketAddress("172.17.0.2", 80);
 
-		JsonReader reader = WebApiConnector.getJsonReader(url,proxy);
-		//JsonReader reader = WebApiConnector.getJsonReader(url);
+		//JsonReader reader = WebApiConnector.getJsonReader(url,proxy);
+		JsonReader reader = WebApiConnector.getJsonReader(url);
 
 
 		Luis message = null;

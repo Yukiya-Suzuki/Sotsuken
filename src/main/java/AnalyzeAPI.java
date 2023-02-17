@@ -52,8 +52,10 @@ public class AnalyzeAPI extends HttpServlet {
 		Gson gson = new Gson();
 		
 		String strurl ="https://calendar.cognitiveservices.azure.com/"
-				+ "/formrecognizer/documentModels/prebuilt-read"
-				+ ":analyze?api-version=2022-08-31&stringIndexType=textElements";
+				+ "/formrecognizer/documentModels/"
+				+ "prebuilt-read"
+				+ ":analyze?api-version=2022-08-31"
+				+ "&stringIndexType=textElements";
 		
 		Map<String,String> map = new HashMap<>();
 		map.put("Ocp-Apim-Subscription-Key","9abfc957d16849f7bbf5b669a335f3c1");
@@ -64,8 +66,8 @@ public class AnalyzeAPI extends HttpServlet {
 
 		String jsonData = new Gson().toJson(doc);
 		InetSocketAddress proxy =new InetSocketAddress("172.17.0.2", 80);
-		JsonReader reader = WebApiConnector.postJsonReader(strurl,proxy,map,jsonData);
-		//JsonReader reader = WebApiConnector.postJsonReader(strurl,map,jsonData);
+		//JsonReader reader = WebApiConnector.postJsonReader(strurl,proxy,map,jsonData);
+		JsonReader reader = WebApiConnector.postJsonReader(strurl,map,jsonData);
 		FormRecognizer sendResult = null;
 		if (reader != null) {
 			sendResult = gson.fromJson(reader, FormRecognizer.class);
@@ -78,13 +80,17 @@ public class AnalyzeAPI extends HttpServlet {
 		Gson gson = new Gson();
 		
 		String strurl ="https://calendar.cognitiveservices.azure.com/"
-				+ "/formrecognizer/documentModels/prebuilt-read/"
-				+ "analyzeResults/" + key +"?api-version=2022-08-31"
-				+ "&subscription-key=9abfc957d16849f7bbf5b669a335f3c1";
+				+ "/formrecognizer/documentModels/"
+				+ "prebuilt-read/"
+				+ "analyzeResults/"
+				+ key 
+				+"?api-version=2022-08-31"
+				+ "&subscription-key="
+				+ "9abfc957d16849f7bbf5b669a335f3c1";
 
 		InetSocketAddress proxy =new InetSocketAddress("172.17.0.2", 80);
-		JsonReader reader = WebApiConnector.getJsonReader(strurl,proxy);
-		//JsonReader reader = WebApiConnector.getJsonReader(strurl);
+		//JsonReader reader = WebApiConnector.getJsonReader(strurl,proxy);
+		JsonReader reader = WebApiConnector.getJsonReader(strurl);
 		
 		FormRecognizer analyzeResult = null;
 		if (reader != null) {

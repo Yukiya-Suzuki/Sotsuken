@@ -22,7 +22,7 @@ public class IcalCreate {
 	}
 	
 	public static void createFile() {
-		File file = new File("Z:/JK3B11鈴木之也/GraduationWorks/SotsugyoKenkyu/src/main/webapp/ical.ics");
+		File file = new File("Z:/JK3B11鈴木之也/GraduationWorks/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/SotsugyoKenkyu/ical.ics");
 
 		try {
 			if(file.createNewFile()){
@@ -38,7 +38,7 @@ public class IcalCreate {
 	
 	public static void changeFile(String event, String startdate, String enddate, String starttime, String endtime, String location) {
 		try {
-            FileWriter file = new FileWriter("Z:/JK3B11鈴木之也/GraduationWorks/SotsugyoKenkyu/src/main/webapp/ical.ics");
+            FileWriter file = new FileWriter("Z:/JK3B11鈴木之也/GraduationWorks/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/SotsugyoKenkyu/ical.ics");
             PrintWriter pw = new PrintWriter(new BufferedWriter(file));
             
             pw.println("BEGIN:VCALENDAR");
@@ -60,7 +60,7 @@ public class IcalCreate {
 	}
 	
 	public static void deleteFile() {
-		Path path = Paths.get("Z:/JK3B11鈴木之也/GraduationWorks/SotsugyoKenkyu/src/main/webapp/ical.ics");
+		Path path = Paths.get("Z:/JK3B11鈴木之也/GraduationWorks/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/SotsugyoKenkyu/ical.ics");
 		try {
 			Files.delete(path);
 		} catch(Exception e) {

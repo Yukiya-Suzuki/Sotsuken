@@ -50,11 +50,10 @@ public class OperationAPIServlet extends HttpServlet {
 			} else {
 			*/
 			filename = (String)imageSession.getAttribute("saveFile");
-			String key = "6257009f-526c-410d-a6a9-ab2d04cbf47d";
-			if(filename =="upload/restraunt.jpg") {
-				key = "6257009f-526c-410d-a6a9-ab2d04cbf47d";
-			} else if(filename =="upload/Hanabi.png") {
-				key = "6257009f-526c-410d-a6a9-ab2d04cbf47d";
+			System.out.println(filename);
+			String key = "d638babb-3169-4cbd-97c2-57ec71d182ee";
+			if(filename.equals( "upload/Hanabi.png")) {
+				key = "22e6c397-14c2-436d-a97e-64260b931b79";
 			}
 				//Luisを使用して分類
 				FormRecognizer aResult = AnalyzeAPI.getResult(key);

@@ -45,6 +45,7 @@ public class ImageGetServlet extends HttpServlet {
 			String saveFile = path + File.separator + filename;
 			part.write(saveFile);
 			imageSession.setAttribute("saveFile", "upload/" + filename);
+			System.out.println(saveFile);
 			request.getRequestDispatcher("/内容確認画面.jsp").forward(request, response);
 			
 		} catch(Exception e) {
